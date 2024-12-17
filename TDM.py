@@ -10,7 +10,7 @@ import os
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QLabel, QPushButton, 
     QVBoxLayout, QHBoxLayout, QStyle, QSizePolicy, 
-    QStackedWidget, QLineEdit, QMessageBox
+    QStackedWidget, QLineEdit, QMessageBox, QGridLayout, QGroupBox
 )
 from PyQt6.QtGui import QPixmap, QIcon
 from PyQt6.QtCore import Qt
@@ -149,56 +149,115 @@ class ArchivesPage(QWidget):
         layout.addStretch()  # Pousse les boutons vers le haut
 
 
-
 class EnregistrerInstrumentPage(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Enregistrer un Nouvel Instrument")
 
-        # Layout principal
-        layout = QVBoxLayout()
-        
+        # Layout principal vertical
+        main_layout = QVBoxLayout()
+        main_layout.setContentsMargins(30, 30, 30, 30)  # Ajout de marges autour du layout
+        main_layout.setSpacing(20)
+
         # Titre de la page
-        label = QLabel("Enregistrement d'un Nouvel Instrument")
-        label.setStyleSheet("font-size: 25px; font-weight: bold;")
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(label)
-        
+        label_titre = QLabel("Enregistrement d'un Nouvel Instrument")
+        label_titre.setStyleSheet("font-size: 20px; font-weight: bold;")
+        label_titre.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        main_layout.addWidget(label_titre)
+
+        # Groupe des champs de saisie
+        group_box = QGroupBox("Informations de l'instrument")
+        group_layout = QGridLayout()
+        group_layout.setSpacing(15)  # Espacement entre les widgets
+
         # Champ de saisie du nom de l'instrument
+        label_nom = QLabel("Nom de l'instrument :")
         self.txt_nom = QLineEdit()
-        self.txt_nom.setPlaceholderText("Nom du nouvel Instrument")
-        layout.addWidget(self.txt_nom)
+        self.txt_nom.setPlaceholderText("Exemple : EC1166")
+        group_layout.addWidget(label_nom, 0, 0)
+        group_layout.addWidget(self.txt_nom, 0, 1)
+
+        # Champ de saisie de la valeur cible minimale
+        label_cible_min = QLabel("Valeur cible minimale de vérification :")
+        self.txt_cible_min = QLineEdit()
+        self.txt_cible_min.setPlaceholderText("Exemple : 5")
+        group_layout.addWidget(label_cible_min, 1, 0)
+        group_layout.addWidget(self.txt_cible_min, 1, 1)
         
-        # Champ de saisie de l'étendue de l'instrument
-        self.txt_etendue = QLineEdit()
-        self.txt_etendue.setPlaceholderText("Étendue de l'instrument (ex: Do1 - Do7)")
-        layout.addWidget(self.txt_etendue)
-        
+        # Champ de saisie de la valeur en milieu de gamme
+        label_cible_milieu = QLabel("Valeur cible milieu de gamme de vérification :")
+        self.txt_cible_milieu = QLineEdit()
+        self.txt_cible_milieu.setPlaceholderText("Exemple : 25")
+        group_layout.addWidget(label_cible_milieu, 2, 0)
+        group_layout.addWidget(self.txt_cible_milieu, 2, 1)
+
+        # Champ de saisie de la valeur cible minimale
+        label_cible_max = QLabel("Valeur cible maximale de vérification :")
+        self.txt_cible_max = QLineEdit()
+        self.txt_cible_max.setPlaceholderText("Exemple : 50")
+        group_layout.addWidget(label_cible_max, 3, 0)
+        group_layout.addWidget(self.txt_cible_max, 3, 1)
+
+        group_box.setLayout(group_layout)
+        main_layout.addWidget(group_box)
+
+        # Layout pour les boutons
+        button_layout = QHBoxLayout()
+        button_layout.setSpacing(20)
+
         # Bouton d'enregistrement
         self.btn_save = QPushButton("Enregistrer l'instrument")
         self.btn_save.clicked.connect(self.enregistrer_instrument)
-        layout.addWidget(self.btn_save)
-        
+        button_layout.addWidget(self.btn_save)
+
         # Bouton de retour à l'accueil
         btn_home = QPushButton("Retour à l'accueil")
         btn_home.clicked.connect(lambda: parent.stacked_widget.setCurrentWidget(parent.main_page))
-        layout.addWidget(btn_home)
-        
-        # Ajout d'espace flexible pour pousser les widgets vers le haut
-        layout.addStretch()
-        
-        # Application du layout à la fenêtre
-        self.setLayout(layout)
-    
+        button_layout.addWidget(btn_home)
+
+        # Centrer les boutons
+        button_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        main_layout.addLayout(button_layout)
+
+        # Appliquer le layout principal
+        self.setLayout(main_layout)
+
     def enregistrer_instrument(self):
-        """Récupère les informations des champs et les affiche (ou les enregistre dans une base de données)."""
+        """Récupère les informations des champs et vérifie leur validité."""
         nom_instrument = self.txt_nom.text()
-        etendue_instrument = self.txt_etendue.text()
-        
-        if nom_instrument and etendue_instrument:
-            print(f"Instrument enregistré : {nom_instrument}, Étendue : {etendue_instrument}")
-        else:
-            print("Veuillez remplir tous les champs avant d'enregistrer.")
+        cible_min = self.txt_cible_min.text()
+        cible_milieu = self.txt_cible_milieu.text()
+        cible_max = self.txt_cible_max.text()
+
+        # Vérifier si les champs sont remplis
+        if not nom_instrument or not cible_min or not cible_max or not cible_milieu:
+            QMessageBox.warning(self, "Champs manquants", "Veuillez remplir tous les champs.")
+            return
+
+        # Vérifier si les valeurs sont numériques
+        try:
+            cible_min = float(cible_min)
+            cible_milieu = float(cible_milieu)
+            cible_max = float(cible_max)
+        except ValueError:
+            QMessageBox.warning(self, "Erreur de saisie", "Les valeurs d'étendue doivent être des nombres.")
+            return
+
+        # Vérifier la cohérence des valeurs
+        if cible_min >= cible_max:
+            QMessageBox.warning(self, "Erreur de cohérence", "La valeur minimale doit être inférieure à la valeur maximale.")
+            return
+
+        # Confirmation d'enregistrement
+        QMessageBox.information(
+            self, 
+            "Instrument Enregistré", 
+            f"Instrument enregistré : {nom_instrument}\n"
+            f"Cibles de mesures : {cible_min}, {cible_milieu}, {cible_max}"
+        )
+        print(f"Instrument enregistré : {nom_instrument}, Cibles de mesures : {cible_min}, {cible_milieu}, {cible_max}")
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
