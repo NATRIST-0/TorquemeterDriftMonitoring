@@ -117,6 +117,9 @@
         <property name="text">
          <string>Suivi des Vérifications</string>
         </property>
+        <property name="icon">
+         <iconset theme="SP_FileDialogContentsView"/>
+        </property>
         <attribute name="buttonGroup">
          <string notr="true">buttonGroup</string>
         </attribute>
@@ -206,14 +209,14 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>230</y>
-      <width>54</width>
+      <x>110</x>
+      <y>10</y>
+      <width>181</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Suivi</string>
+     <string>Suivi des Vérifications</string>
     </property>
    </widget>
    <widget class="QPushButton" name="suivi_menu">
@@ -227,6 +230,29 @@
     </property>
     <property name="text">
      <string>Menu</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>10</y>
+      <width>211</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sélectionner l'Instrument à afficher</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_nom">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>10</y>
+      <width>151</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -300,14 +326,14 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>280</y>
-      <width>54</width>
+      <x>100</x>
+      <y>10</y>
+      <width>201</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>save inst</string>
+     <string>Enregistrer un Nouvel Instruement</string>
     </property>
    </widget>
    <widget class="QPushButton" name="enregistrer_instrument_menu">
@@ -321,6 +347,94 @@
     </property>
     <property name="text">
      <string>Menu</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>80</y>
+      <width>551</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Information de l'instrument</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>511</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Référence de l'instrument :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Couple de vérification minimal [N.m]:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Couple de vérification milieu de gamme [N.m] :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>Couple de vérification milieu maximal [N.m]:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Tolérence [N.m]:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QTextEdit" name="Cmax"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QTextEdit" name="Cmilieu"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QTextEdit" name="Cmin"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QTextEdit" name="ref_instrument"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QTextEdit" name="tolerence"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="bouton_confirmer_instrument">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>400</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Confirmer</string>
     </property>
    </widget>
   </widget>
