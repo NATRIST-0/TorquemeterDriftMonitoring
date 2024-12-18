@@ -5,39 +5,43 @@
 Torquemeters Drift Monitoring fonctions
 """
 
-from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QStyle, QMessageBox, QPushButton, QLineEdit, QTextEdit
+from PyQt6.QtWidgets import QStyle, QMessageBox, QLineEdit
 
 def print_instrument_data(self):
     # Récupérer les valeurs des champs sur la page "page_enregistrer_instrument"
-    ref_instrument = self.ui.page_enregistrer_instrument.findChild(QTextEdit, "ref_instrument")
-    Cmin = self.ui.page_enregistrer_instrument.findChild(QTextEdit, "Cmin")
-    Cmilieu = self.ui.page_enregistrer_instrument.findChild(QTextEdit, "Cmilieu")
-    Cmax = self.ui.page_enregistrer_instrument.findChild(QTextEdit, "Cmax")
+    ref_instrument = self.ui.page_enregistrer_instrument.findChild(QLineEdit, "ref_instrument")
+    Cmin = self.ui.page_enregistrer_instrument.findChild(QLineEdit, "Cmin")
+    Cmilieu = self.ui.page_enregistrer_instrument.findChild(QLineEdit, "Cmilieu")
+    Cmax = self.ui.page_enregistrer_instrument.findChild(QLineEdit, "Cmax")
+    tolerence = self.ui.page_enregistrer_instrument.findChild(QLineEdit, "Cmax")
     
-    # Vérifier si les champs sont remplis
-    if not ref_instrument or not Cmin or not Cmilieu or not Cmax:
+    if not ref_instrument or not Cmin or not Cmilieu or not Cmax or not tolerence:
         QMessageBox.warning(self, "Champs manquants", "Veuillez remplir tous les champs.")
         return
 
-    # Vérifier si les valeurs sont numériques
     try:
-        Cmin = float(Cmin)
-        Cmilieu = float(Cmilieu)
-        Cmax = float(Cmax)
+        Cmin = float(Cmin.text())
+        Cmilieu = float(Cmilieu.text())
+        Cmax = float(Cmax.text())
+        tolerence = float(tolerence.text())
+        
     except ValueError:
         QMessageBox.warning(self, "Erreur de saisie", "Les valeurs d'étendue doivent être des nombres.")
         return
-    # Vérifier la cohérence des valeurs
+
     if Cmin >= Cmax:
         QMessageBox.warning(self, "Erreur de cohérence", "La valeur minimale doit être inférieure à la valeur maximale.")
         return
+
     # Confirmation d'enregistrement
     QMessageBox.information(
         self, 
         "Instrument Enregistré", 
-        f"Instrument enregistré : {ref_instrument}\n"
-        f"Cibles de mesures : {Cmin}, {Cmilieu}, {Cmax}")
-    print(f"Instrument enregistré : {ref_instrument}, Cibles de mesures : {Cmin}, {Cmilieu}, {Cmax}")
+        f"Instrument enregistré : {ref_instrument.text()}\n"  # N'oubliez pas d'utiliser .text() ici aussi
+        f"Cibles de mesures : {Cmin}, {Cmilieu}, {Cmax}\n"
+        f"Tolérence = {tolerence}")
+    print(f"Instrument enregistré : {ref_instrument.text()}, Cibles de mesures : {Cmin}, {Cmilieu}, {Cmax}, Tolérance = {tolerence}")
+
 
 def icones_boutons(self):
     style = self.style()

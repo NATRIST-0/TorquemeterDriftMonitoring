@@ -7,7 +7,7 @@ Run Torquemeters Drift Monitoring UI
  
 import TDM_fonctions as tf
 from TDM import Ui_StackedWidget
-from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QTextEdit
+from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
  
 class Window(QMainWindow):
     def __init__(self):  # Note: Fixed typo in __init__

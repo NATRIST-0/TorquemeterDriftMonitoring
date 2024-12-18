@@ -326,11 +326,16 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>240</x>
       <y>10</y>
-      <width>201</width>
-      <height>16</height>
+      <width>381</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Enregistrer un Nouvel Instruement</string>
@@ -352,10 +357,10 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>80</y>
+      <x>160</x>
+      <y>140</y>
       <width>551</width>
-      <height>301</height>
+      <height>211</height>
      </rect>
     </property>
     <property name="title">
@@ -365,9 +370,9 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>20</y>
+       <y>30</y>
        <width>511</width>
-       <height>271</height>
+       <height>161</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -375,13 +380,6 @@
        <widget class="QLabel" name="label_9">
         <property name="text">
          <string>Référence de l'instrument :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Couple de vérification minimal [N.m]:</string>
         </property>
        </widget>
       </item>
@@ -406,20 +404,27 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QTextEdit" name="Cmax"/>
-      </item>
-      <item row="2" column="1">
-       <widget class="QTextEdit" name="Cmilieu"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QTextEdit" name="Cmin"/>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Couple de vérification minimal [N.m]:</string>
+        </property>
+       </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QTextEdit" name="ref_instrument"/>
+       <widget class="QLineEdit" name="ref_instrument"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="Cmin"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="Cmilieu"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="Cmax"/>
       </item>
       <item row="4" column="1">
-       <widget class="QTextEdit" name="tolerence"/>
+       <widget class="QLineEdit" name="tolerence"/>
       </item>
      </layout>
     </widget>
@@ -427,7 +432,7 @@
    <widget class="QPushButton" name="bouton_confirmer_instrument">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>390</x>
       <y>400</y>
       <width>93</width>
       <height>28</height>
