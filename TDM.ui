@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>888</width>
-    <height>551</height>
+    <height>604</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -116,9 +116,6 @@
        <widget class="QPushButton" name="pushButton_suivi_verif">
         <property name="text">
          <string>Suivi des Vérifications</string>
-        </property>
-        <property name="icon">
-         <iconset theme="SP_FileDialogContentsView"/>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">buttonGroup</string>
@@ -257,19 +254,6 @@
    </widget>
   </widget>
   <widget class="QWidget" name="page_nouvelle_verification">
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>200</y>
-      <width>261</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>nouvelle_verification</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="nouvelle_verification_menu">
     <property name="geometry">
      <rect>
@@ -283,15 +267,341 @@
      <string>Menu</string>
     </property>
    </widget>
-   <widget class="QDateEdit" name="dateEdit">
+   <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>170</y>
-      <width>110</width>
-      <height>22</height>
+      <x>300</x>
+      <y>20</y>
+      <width>311</width>
+      <height>131</height>
      </rect>
     </property>
+    <property name="title">
+     <string>Nouvelle Vérification</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>251</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Instrument à vérifier :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox_instru_nv_verif"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Date de vérification :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDateEdit" name="dateEdit_nv_verif"/>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButton_save_nv_verif">
+        <property name="text">
+         <string>Enregistrer les mesures</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>270</y>
+      <width>68</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <widget class="QLabel" name="label_22">
+       <property name="text">
+        <string>Mesure n°1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_23">
+       <property name="text">
+        <string>Mesure n°2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_24">
+       <property name="text">
+        <string>Mesure n°3</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_25">
+       <property name="text">
+        <string>Mesure n°4</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_26">
+       <property name="text">
+        <string>Mesure n°5</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_27">
+       <property name="text">
+        <string>Moyennes</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>163</x>
+      <y>212</y>
+      <width>625</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Couple de vérification minimal</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>Cmin = </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_Cmin">
+           <property name="text">
+            <string>_______</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_28">
+           <property name="text">
+            <string>N.m</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmin_1"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmin_2"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmin_3"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmin_4"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmin_5"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Cmin_moy">
+         <property name="text">
+          <string>_________________________</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>Couple de vérification milieu de gamme</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_21">
+           <property name="text">
+            <string>Cmilieu = </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_Cmilieu">
+           <property name="text">
+            <string>_______</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_31">
+           <property name="text">
+            <string>N.m</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmilieu_1"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmilieu_2"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmilieu_3"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmilieu_4"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmilieu_5"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Cmilieu_moy">
+         <property name="text">
+          <string>________________________________</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_5">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>Couple de vérification maximal</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>Cmax = </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_Cmax">
+           <property name="text">
+            <string>_______</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_32">
+           <property name="text">
+            <string>N.m</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmax_1"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmax_2"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmax_3"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmax_4"/>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="Cmax_5"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Cmax_moy">
+         <property name="text">
+          <string>_________________________</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QWidget" name="page_archives">
@@ -366,7 +676,7 @@
     <property name="title">
      <string>Information de l'instrument</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -400,7 +710,7 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_13">
         <property name="text">
-         <string>Tolérence [N.m]:</string>
+         <string>Tolérance [N.m]:</string>
         </property>
        </widget>
       </item>
@@ -424,7 +734,7 @@
        <widget class="QLineEdit" name="Cmax"/>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="tolerence"/>
+       <widget class="QLineEdit" name="tolerance"/>
       </item>
      </layout>
     </widget>

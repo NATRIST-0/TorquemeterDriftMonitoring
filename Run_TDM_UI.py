@@ -8,35 +8,32 @@ Run Torquemeters Drift Monitoring UI
 import TDM_fonctions as tf
 from TDM import Ui_StackedWidget
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
- 
+import sqlite3
+
 class Window(QMainWindow):
-    def __init__(self):  # Note: Fixed typo in __init__
+    def __init__(self):
         super().__init__()
         self.setGeometry(50, 50, 888, 551)
-       
-        # Créer un QStackedWidget comme widget central
+
+        # Create a QStackedWidget as the central widget
         self.stackedWidget = QStackedWidget(self)
         self.setCentralWidget(self.stackedWidget)
-       
-        # Créer l'UI
+
+        # Create the UI
         self.ui = Ui_StackedWidget()
         self.ui.setupUi(self.stackedWidget)
-       
-        # Ajout des icônes aux boutons
+        
+        # Créer table SQLite
+        tf.creer_table(self)
+        
+        # Add icons to buttons
         tf.icones_boutons(self)
-       
-        # Configuration des connexions pour naviguer entre les pages
+
+        # Setup navigation between pages
         tf.setup_navigation(self)
-       
-        # Définiton des différente pages de l'application
-        page_suivi = self.ui.page_suivi
-        page_enregistrer = self.ui.page_enregistrer_instrument
-        page_nouvelle_verification = self.ui.page_nouvelle_verification
-        page_archives = self.ui.page_archives
-        page_export = self.ui.page_export
-       
-        # Exemple pour appeler la fonction quand un bouton est cliqué
-        self.ui.bouton_confirmer_instrument.clicked.connect(lambda: tf.print_instrument_data(self))
+
+        # Define the various pages in the application
+        self.ui.bouton_confirmer_instrument.clicked.connect(lambda: tf.enregistrer_donnees_instrument(self))
 
 app = QApplication([])
 window = Window()
